@@ -1,0 +1,60 @@
+
+# HBM Sample App core services
+
+services:
+
+  hbm-node-app:
+    image: ${REGISTRY:-hbm}/hbm-node-app:${TAG:-latest}
+    build:
+      context: ./hbm-node-app/
+      dockerfile: Dockerfile
+    ports:
+      - 8081:3000
+    networks:
+      - hbm_local_net
+
+  hbm-dotnet-app:
+    image: ${REGISTRY:-hbm}/hbm-dotnet-app:${TAG:-latest}
+    build:
+      context: ./hbm-dotnet-app/
+      dockerfile: Dockerfile
+    ports:
+      - 8082:8080
+    networks:
+      - hbm_local_net
+
+  hbm-java-app:
+    image: ${REGISTRY:-hbm}/hbm-java-app:${TAG:-latest}
+    build:
+      context: ./hbm-java-app/
+      dockerfile: Dockerfile
+    ports:
+      - 8083:8080
+    networks:
+      - hbm_local_net
+
+  hbm-python-app:
+    image: ${REGISTRY:-hbm}/hbm-python-app:${TAG:-latest}
+    build:
+      context: ./hbm-python-app/
+      dockerfile: Dockerfile
+    ports:
+      - 8084:8080
+    networks:
+      - hbm_local_net
+
+  hbm-react-app:
+    image: ${REGISTRY:-hbm}/hbm-react-app:${TAG:-latest}
+    build:
+      context: ./hbm-react-app/
+      dockerfile: Dockerfile
+    ports:
+      - 8085:80
+    networks:
+      - hbm_local_net
+
+
+networks:
+  hbm_local_net:
+    external: true
+    

@@ -1,0 +1,41 @@
+{
+  "name": "HBM Python App",
+  "dockerFile": "./DevContainer.Dockerfile",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "remote.autoForwardPorts": false
+      },
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  },
+
+  "features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			
+		}
+    // uncomment the following line to use Docker from inside the container
+    // "docker-in-docker": {}
+	},
+
+  // "postCreateCommand": "",
+
+  "appPort": [
+    "9084:8080"
+  ],
+  
+  "runArgs": [
+    "--network=hbm_local_net",
+    "--net-alias=hbm-python-app",
+    "--name=hbm-python-app"
+  ],
+
+  "remoteEnv": {
+    // "NUGET_PACKAGES": "/home/vscode/.nuget/packages",
+    // "TESTCONTAINERS_HOST_OVERRIDE": "host.docker.internal"
+  }
+ 
+}

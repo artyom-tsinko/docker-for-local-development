@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-HbmJavaAppApplication<hbm-java-app>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "hbm.java.app.hbm_java_app.HbmJavaAppApplication",
+      "projectName": "hbm-java-app",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

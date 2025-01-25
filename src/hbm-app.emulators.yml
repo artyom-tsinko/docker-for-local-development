@@ -1,0 +1,32 @@
+
+services:
+
+  azure-storage-emulator:
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    command: azurite-blob --blobHost 0.0.0.0 --blobPort 10000
+    ports:
+      - 10000:10000
+    volumes:
+      - hbm-local-azure-storage-data:/data
+    networks:
+      - hbm_local_net
+
+  # localstack AWS emulator
+  # see https://docs.localstack.cloud/developer-guide/basics/ for details
+  aws-localstack-emulator:
+    image: localstack/localstack:${TAG:-latest}
+    ports:
+      - 4566:4566            # LocalStack Gateway
+    environment:
+      - SERVICES=sqs,s3
+      - DEBUG=1
+    networks:
+      - hbm_local_net
+
+volumes:
+  hbm-local-azure-storage-data:
+    external: false
+
+networks:
+  hbm_local_net:
+    external: true

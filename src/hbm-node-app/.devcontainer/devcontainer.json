@@ -1,0 +1,34 @@
+{
+  "name": "HBM Node.js App",
+  "dockerFile": "./DevContainer.Dockerfile",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "remote.autoForwardPorts": false
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+
+  "features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			
+		}
+	},
+
+  "postCreateCommand": "npm install",
+
+  "appPort": [
+    "9082:3000"
+  ],
+  
+  "runArgs": [
+    "--network=hbm_local_net",
+    "--net-alias=hbm-node-app",
+    "--name=hbm-node-app"
+  ]
+ 
+}
