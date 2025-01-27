@@ -106,3 +106,15 @@ Demonstrate access to emulators via management UI (Azure and AWS)
 
 Explain where to get images for various setups Redis, RDBM, NoSQL, etc (duockerhub, awesome-compose, etc)
 
+
+# Test apps endpoints:
+
+1. GET /health - check connections to infra, health report
+
+    - implement shared configs
+
+2. POST /connect - connect anoother endpoint within the network
+
+3. GET /env - print environment variables
+
+

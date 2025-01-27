@@ -1,8 +1,10 @@
 **/node_modules
 **/tools
+**/dist
+**/build
 .git
 .dockerignore
 .gitignore
-build
 Dockerfile
 .env.local
+.env

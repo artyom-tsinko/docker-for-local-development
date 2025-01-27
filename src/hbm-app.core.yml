@@ -10,6 +10,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8081:3000
+    volumes:
+      - ./hbm-node-app/.env:/usr/src/app/.env:ro
     networks:
       - hbm_local_net
 
@@ -20,6 +22,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8082:8080
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./hbm-dotnet-app/Hbm.DotNet.App/appsettings.Development.json:/app/appsettings.Development.json:ro
     networks:
       - hbm_local_net
 
@@ -40,6 +46,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8084:8080
+    volumes:
+      - ./hbm-python-app/config.ini:/usr/src/app/config.ini:ro
     networks:
       - hbm_local_net
 
@@ -52,7 +60,6 @@ services:
       - 8085:80
     networks:
       - hbm_local_net
-
 
 networks:
   hbm_local_net:

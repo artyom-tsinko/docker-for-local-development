@@ -88,3 +88,6 @@ venv/
 
 # VS Code
 .vscode/
+
+# Do not add config to docker image, map it in docker-compose.yml instead
+config.ini

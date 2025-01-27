@@ -3,19 +3,6 @@
 
 services:
 
-  mssql-server:
-    image: mcr.microsoft.com/mssql/server:2019-latest
-    environment:
-      - SA_PASSWORD=Qwerty_123
-      - ACCEPT_EULA=Y
-      - MSSQL_PID=Express
-    ports:
-      - 20433:1433
-    volumes:
-      - hbm-local-sqldata:/var/opt/mssql
-    networks:
-      - hbm_local_net
-
   rabbitmq:
     image: rabbitmq:3-management-alpine
     ports:
@@ -25,7 +12,7 @@ services:
       - hbm_local_net
 
   redis:
-    image: redis
+    image: redis:latest
     ports:
       - 6379:6379
     command: 
@@ -34,26 +21,49 @@ services:
     networks:
       - hbm_local_net
 
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+  # https://github.com/joeferner/redis-commander/pkgs/container/redis-commander#with-docker-compose
+  redis-commander:
+    image: ghcr.io/joeferner/redis-commander:latest
     environment:
-      - xpack.security.enabled=false
-      - discovery.type=single-node
+      - REDIS_HOSTS=hbm-app-redis:redis:6379
     ports:
-      - 9200:9200
-    volumes:
-      - hbm-es-data:/usr/share/elasticsearch/data
+      - 8090:8081
     networks:
       - hbm_local_net
-      
+
+  postgres-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - hbm-local-pgsql-data:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - hbm_local_net
+  
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@local.net
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - hbm-local-pgadmin-data:/var/lib/pgadmin
+    ports:
+      - 8091:80
+    networks:
+      - hbm_local_net
+
 volumes:
-  hbm-local-sqldata:
+  hbm-local-pgsql-data:
     external: false
-  hbm-es-data:
-    driver: local
+  hbm-local-pgadmin-data:
+    external: false
 
 networks:
   hbm_local_net:
-    external: false
-    name: hbm_local_net
+    external: true
     
