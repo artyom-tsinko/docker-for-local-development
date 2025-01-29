@@ -30,5 +30,5 @@ out/
 *.ipr
 *.iws
 
-.env
+# .env
 /.vs
