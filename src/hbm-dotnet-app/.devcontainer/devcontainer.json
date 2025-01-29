@@ -30,7 +30,7 @@
   "runArgs": [
     "--network=hbm_local_net",
     "--net-alias=hbm-dotnet-app",
-    "--name=hbm-dotnet-app"
+    "--name=dev-hbm-dotnet-app"
   ],
 
   "remoteEnv": {

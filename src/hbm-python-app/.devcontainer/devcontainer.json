@@ -30,11 +30,10 @@
   "runArgs": [
     "--network=hbm_local_net",
     "--net-alias=hbm-python-app",
-    "--name=hbm-python-app"
+    "--name=dev-hbm-python-app"
   ],
 
   "remoteEnv": {
-    // "NUGET_PACKAGES": "/home/vscode/.nuget/packages",
     // "TESTCONTAINERS_HOST_OVERRIDE": "host.docker.internal"
   }
  

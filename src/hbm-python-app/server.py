@@ -5,8 +5,10 @@ import requests
 import psycopg2
 import redis
 import pika
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 config = configparser.ConfigParser()
 config.read('config.ini')

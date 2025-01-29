@@ -36,11 +36,10 @@
   "runArgs": [
     "--network=hbm_local_net",
     "--net-alias=hbm-java-app",
-    "--name=hbm-java-app"
+    "--name=dev-hbm-java-app"
   ],
 
   "remoteEnv": {
-    // "NUGET_PACKAGES": "/home/vscode/.nuget/packages",
     // "TESTCONTAINERS_HOST_OVERRIDE": "host.docker.internal"
   }
  

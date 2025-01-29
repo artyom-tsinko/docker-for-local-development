@@ -22,13 +22,13 @@
   "postCreateCommand": "npm install",
 
   "appPort": [
-    "9082:3000"
+    "9081:3000"
   ],
   
   "runArgs": [
     "--network=hbm_local_net",
     "--net-alias=hbm-node-app",
-    "--name=hbm-node-app"
+    "--name=dev-hbm-node-app"
   ]
  
 }

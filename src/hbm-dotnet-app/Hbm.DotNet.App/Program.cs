@@ -14,7 +14,21 @@ builder.WebHost.ConfigureKestrel((context, options) =>
     options.Listen(System.Net.IPAddress.Parse(host), int.Parse(port));
 });
 
+// Add CORS services
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+
+// Use CORS middleware
+app.UseCors();
 
 app.MapGet("/", async (IConfiguration config, HttpRequest req) => {
   Console.WriteLine("Serving /");

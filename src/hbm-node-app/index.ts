@@ -1,11 +1,16 @@
 import express, { Express, Request, Response, Router } from "express";
-import dotenvx from "@dotenvx/dotenvx"
+import dotenvx from "@dotenvx/dotenvx";
+import cors from "cors";
 import { defaultRoute } from "./routes";
 
 dotenvx.config();
 
 const app: Express = express();
 const port = process.env.APP_PORT ? process.env.APP_PORT : (() => { throw new Error("PORT is not defined"); })();
+
+// Disable CORS for all routes
+
+app.use(cors());
 
 // Add routes
 

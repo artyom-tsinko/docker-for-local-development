@@ -28,7 +28,7 @@
   "runArgs": [
     "--network=hbm_local_net",
     "--net-alias=hbm-react-app",
-    "--name=hbm-react-app"
+    "--name=dev-hbm-react-app"
   ]
  
 }

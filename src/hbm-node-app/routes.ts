@@ -23,14 +23,14 @@ defaultRoute.get('/health', async (req, res) => {
   console.log("Serving /health route");
 
   // postgress
-  let pgStatus = 'Success';
+  let pgStatus = 'OK';
   const client = new pg.Client(process.env.PG_URL);
   try {
     await client.connect();
     await client.query('SELECT 1;');
   }
   catch (err) {
-    pgStatus = 'Failed';
+    pgStatus = 'Fail';
     console.error(err);
   }
   finally {
@@ -38,13 +38,13 @@ defaultRoute.get('/health', async (req, res) => {
   }
   
   // RabbitMQ
-  let rmqStatus = 'Success';
+  let rmqStatus = 'OK';
   let rmqConnection: amqp.Connection | undefined;
   try {
     rmqConnection = await amqp.connect(process.env.RABBITMQ_URL!);
   }
   catch (err) {
-    rmqStatus = 'Failed';
+    rmqStatus = 'Fail';
     console.error(err);
   }
   finally {
@@ -54,7 +54,7 @@ defaultRoute.get('/health', async (req, res) => {
   }
 
   // Redis
-  let redisStatus = 'Success';
+  let redisStatus = 'OK';
   let redisClient: ReturnType<typeof redis.createClient> | undefined;
   try {
     redisClient = redis.createClient({ url: process.env.REDIS_URL });
@@ -62,7 +62,7 @@ defaultRoute.get('/health', async (req, res) => {
     await redisClient.ping();
   }
   catch (err) {
-    redisStatus = 'Failed';
+    redisStatus = 'Fail';
     console.error(err);
   }
   finally {
