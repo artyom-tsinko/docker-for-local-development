@@ -13,8 +13,8 @@ dist-ssr
 *.local
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+# .vscode/*
+# !.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
@@ -47,7 +47,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea/
-.vscode/
+# .vscode/
 
 # IntelliJ
 out/
