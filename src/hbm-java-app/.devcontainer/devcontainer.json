@@ -36,7 +36,8 @@
   "runArgs": [
     "--network=hbm_local_net",
     "--net-alias=hbm-java-app",
-    "--name=dev-hbm-java-app"
+    "--name=dev-hbm-java-app",
+    "--label=com.docker.compose.project=hbm-app"
   ],
 
   "remoteEnv": {

@@ -30,7 +30,8 @@
   "runArgs": [
     "--network=hbm_local_net",
     "--net-alias=hbm-python-app",
-    "--name=dev-hbm-python-app"
+    "--name=dev-hbm-python-app",
+    "--label=com.docker.compose.project=hbm-app"
   ],
 
   "remoteEnv": {

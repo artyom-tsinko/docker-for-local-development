@@ -118,3 +118,8 @@ Explain where to get images for various setups Redis, RDBM, NoSQL, etc (duockerh
 3. GET /env - print environment variables
 
 
+
+
+# Presentation script
+
+1. 
