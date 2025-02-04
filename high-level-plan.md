@@ -122,4 +122,56 @@ Explain where to get images for various setups Redis, RDBM, NoSQL, etc (duockerh
 
 # Presentation script
 
-1. 
+-1. Add README on each level explaining how to perform basic installation of the app and VS code with devcontainers.
+
+
+0. Explain personal development process - local experiments, scientific method (speed of experiment, purity of experiment).
+   How it was:
+     - local software
+     - shared on remote server
+     - shared in cloud
+     - virtualized / isolated!
+
+0.1 Docker use cases
+
+  - local development
+
+  - tools and utilities
+
+1. Present the HBM sample project "architecture"
+
+   - explain infra
+   - explain apps
+
+2. Show local infra, virtualized in docker (infra.yaml)
+
+   - admin / control UI alongside with actual infra
+
+   - demo data mounts vs volumes
+
+   - init data with tools and utilities section
+
+3. Present cloud emulators (hbm-app.emulators.yml)
+
+4. Present apps part (hbm-app.core.yml), highlight ability to:
+
+   - build docker images locally from source code + compose project
+
+   - run full platform locally from sources built (without running each service in IDE)
+
+4.1 DEBUG apps running in docker container
+
+   - debug process is complex (jacky chan) even on local machine (refer to OS-level calls, kernel / user space, etc)
+
+   - debug in docker is always a form of remote debug (due to container isolation) - simpler (eddie murphy)
+
+   - debug is specific to IDE / technology / OS you're on
+
+   - meet devcontainers as *one of possibilities*
+     - refer gh codespaces
+
+   - demo debugged containers running in parallel with "generic" ones
+
+     - explain the idea of replacing container with the same domain name, same ports exposed and shared (mounted) config
+
+5. Conclusions - show PAI as full-fledged app
