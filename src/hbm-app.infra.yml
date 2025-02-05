@@ -6,15 +6,15 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     ports:
-      - 20672:5672
+      # - 20672:5672
       - 17672:15672
     networks:
       - hbm_local_net
 
   redis:
     image: redis:latest
-    ports:
-      - 6379:6379
+    # ports:
+    #   - 6379:6379
     command: 
       --maxmemory 100000000 
       --maxmemory-policy volatile-lru
@@ -39,8 +39,8 @@ services:
       PGDATA: /data/postgres
     volumes:
       - hbm-local-pgsql-data:/data/postgres
-    ports:
-      - 5432:5432
+    # ports:
+    #   - 5432:5432
     networks:
       - hbm_local_net
   

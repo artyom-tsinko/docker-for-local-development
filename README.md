@@ -23,6 +23,9 @@ Following software is required to be installed locally.
 
 # Local app infrastructure
 
+![Local app infrastructure](./images/docker-for-local-development-infra.png)
+
+
 Our sample app infra consists of `Redis`, `PostgresDB` and `RabbitMQ`. Our infrastructure components are defined in `./src/hbm-app.infra.yml` file. Execute following commands to start the infra with Docker compose.
 
 ```
@@ -69,6 +72,8 @@ Our RMQ instance comes with built-in Management UI. You should be able to access
 
 # Local application services
 
+![Local application services](./images/docker-for-local-development-app-core.png)
+
 Our sample app services are defined in `./src/hbm-app.core.yml` file.
 
 Sample app consists of five containers/services: four Web API applications and font end React app to rule them all. In order to demostrate cross-platform/tech nature of the potential setup, each WebAPI app is implemented in different technology. I've chosen four most popular in HMB: Node (TypeScript), Python, .NET, Java.
@@ -89,6 +94,8 @@ You should see the `hbm-app` compose project populated with additonal services, 
 
 
 # Debug application services in Docker container
+
+![Debug application services in Docker container](./images/docker-for-local-development-app-debug.png)
 
 Although seem simple on the first glance, debbugging is a complex topic. Its actual implementation depends on many factors, including your OS, technology, IDE and lots of other things. Since docker provides its own degree of isolation from the host OS, debugging of the Docker-containerized apps could be seen as a form of remote debugging. Usually it is either your IDE connects to the app which runs "debug mode" in conatiner through certain form of tunnelling, or your IDE works in client-server mode, where "server" runs the app in debug mode in container. Generally, there are a number of technologies on the market, and you should find the one which best fits your ecosystem and toolset.
 
@@ -154,27 +161,27 @@ docker run -it --rm --network=hbm_local_net -v ${pwd}/check_me.sh:/check_me.sh:r
 Among use cases are:
 
 - networking troubleshoot / diagnostics
-  https://hub.docker.com/r/nicolaka/netshoot
+   - https://hub.docker.com/r/nicolaka/netshoot
 
 - benchmarking (e.g. apache ab)
-  `docker run --rm jordi/ab -v 2 https://www.docker.com/`
+   - `docker run --rm jordi/ab -v 2 https://www.docker.com/`
 
 - processing tools (jq | curl | wget | bash | etc)
 
 - database utils (for complex migrations)
-  https://hub.docker.com/r/microsoft/mssql-tools
-  https://hub.docker.com/r/pygmy/pgcli
+   - https://hub.docker.com/r/microsoft/mssql-tools
+   - https://hub.docker.com/r/pygmy/pgcli
 
 - repeatable local builds (aka local CI/CD, if necessary)
 
 - data seeding / injestion
-  produce/consume Kafka/RMQ messages
-  bash scripts to seed db
+   - produce/consume Kafka/RMQ messages
+   - bash scripts to seed db
 
 - cli for cloud providers
-  https://hub.docker.com/r/microsoft/azure-cli
-  https://hub.docker.com/r/amazon/aws-cli
-  https://hub.docker.com/r/google/cloud-sdk
+   - https://hub.docker.com/r/microsoft/azure-cli
+   - https://hub.docker.com/r/amazon/aws-cli
+   - https://hub.docker.com/r/google/cloud-sdk
 
 
 ## Docker compose projects
