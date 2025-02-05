@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# docker run -it --rm --network=hbm_local_net -v ${pwd}/check_me.sh:/check_me.sh:ro nicolaka/netshoot /bin/bash /check_me.sh
+
 # Define an array of hosts
 hosts=("hbm-node-app:3000" "hbm-dotnet-app:8080" "hbm-java-app:8080" "hbm-python-app:8080")
 
@@ -69,8 +71,5 @@ do
 
 
 done
-
-
-
 
 echo "Diagnostics complete."
